@@ -99,6 +99,21 @@
     font-size: clamp(36px, 6vw, 60px); font-weight: 800; letter-spacing: -0.04em;
     line-height: 1.02; margin-bottom: 10px; color: #eafff2;
     text-shadow: 0 0 24px rgba(57,255,138,0.25);
+    cursor: default;
+  }
+  /* full name reveal: "ABALA" expands out of "ESVAR" on hover */
+  h1 .reveal-name {
+    display: inline-block; max-width: 0; opacity: 0; overflow: hidden;
+    color: var(--green); vertical-align: bottom; white-space: nowrap;
+    transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+  }
+  h1:hover .reveal-name, h1:focus-visible .reveal-name { max-width: 5em; opacity: 1; }
+  /* touch devices can't hover — always show the full name there */
+  @media (hover: none) {
+    h1 .reveal-name { max-width: 5em; opacity: 1; color: inherit; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    h1 .reveal-name { transition: none; }
   }
   .typeline { min-height: 26px; font-size: 14.5px; color: var(--teal); margin-bottom: 18px; }
   .typeline .cur { display: inline-block; width: 9px; height: 16px; background: var(--teal); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
@@ -279,6 +294,16 @@
   }
   .cert::before { content: "✓"; color: var(--green); font-size: 13px; font-weight: 700; }
 
+  /* ── résumé embed ── */
+  .resume-frame {
+    position: relative; width: 100%; max-width: 720px; margin: 26px auto 0;
+    aspect-ratio: 8.5 / 11; border: 1px solid var(--edge); border-radius: 8px;
+    overflow: hidden; background: #0a0f14;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 40px rgba(57,255,138,0.05);
+  }
+  .resume-frame object, .resume-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .resume-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+
   /* contact */
   .contact-box {
     text-align: center; position: relative;
@@ -326,6 +351,7 @@
       <a href="#experience">/experience</a>
       <a href="#skills">/skills</a>
       <a href="#education">/education</a>
+      <a href="#resume">/resume</a>
       <span class="status-chip">OPEN_TO_WORK</span>
     </div>
   </div>
@@ -336,12 +362,13 @@
   <div class="hero-shade"></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">// SOFTWARE ENGINEER <span class="dim">· PHOENIX, AZ · AVAILABLE</span></span>
-      <h1>ESVAR KANNAN</h1>
+      <span class="eyebrow">// SOFTWARE ENGINEER <span class="dim">· PHOENIX, AZ</span></span>
+      <h1 aria-label="Esvarabala Kannan" title="Esvarabala Kannan — I go by Esvar">ESVAR<span class="reveal-name">ABALA</span> KANNAN</h1>
       <div class="typeline"><span id="typed"></span><span class="cur"></span></div>
       <p class="lede">I build <strong>cloud-native backend systems</strong> at Wells Fargo — microservices, Kafka event streams, Azure — and <strong>instruments for watching AI agents work</strong>: audit middleware for the Model Context Protocol, and a generative portrait rendered from a real multi-agent reasoning trace.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#work">VIEW WORK ↓</a>
+        <a class="btn btn-ghost" href="#resume">RÉSUMÉ</a>
         <a class="btn btn-ghost" href="https://github.com/esvarmajor" target="_blank" rel="noopener">GITHUB</a>
         <a class="btn btn-ghost" href="https://linkedin.com/in/esvarabala-kannan-a2b7a11b6" target="_blank" rel="noopener">LINKEDIN</a>
       </div>
@@ -604,10 +631,27 @@
   </div>
 </section>
 
+<section id="resume">
+  <div class="wrap">
+    <div class="sec-label"><span class="idx">[07]</span> DOSSIER</div>
+    <h2>Résumé</h2>
+    <p class="sec-sub">The full record — one page. Read it inline, open it in a new tab, or pull a copy.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="esvarabala-kannan-resume.pdf" target="_blank" rel="noopener">OPEN PDF ↗</a>
+      <a class="btn btn-ghost" href="esvarabala-kannan-resume.pdf" download="Esvarabala-Kannan-Resume.pdf">DOWNLOAD ↓</a>
+    </div>
+    <div class="resume-frame reveal">
+      <object data="esvarabala-kannan-resume.pdf#view=FitH&toolbar=0" type="application/pdf">
+        <div class="resume-fallback">Your browser can't display the embedded PDF here — <a href="esvarabala-kannan-resume.pdf" target="_blank" rel="noopener">open it in a new tab →</a></div>
+      </object>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="contact-box reveal">
-      <div class="sec-label" style="justify-content:center"><span class="idx">[07]</span> OPEN_CHANNEL</div>
+      <div class="sec-label" style="justify-content:center"><span class="idx">[08]</span> OPEN_CHANNEL</div>
       <h2>Let's build something</h2>
       <p>Backend, platform, and AI-agent engineering roles. U.S. citizen, open to remote and relocation.</p>
       <div class="cta-row" style="justify-content:center">

@@ -16,7 +16,8 @@ Cloudflare dashboard → Workers & Pages → Create → Pages → Upload assets 
 
 ## Notes
 - Preview locally by just opening `index.html` in a browser.
+- Résumé lives at `esvarabala-kannan-resume.pdf`, embedded in the `#resume` section (with open/download buttons). To update it, replace that file — the filename is referenced in `index.html`.
 - Phone/address intentionally omitted (public site) — email, GitHub, LinkedIn only.
 - SWARMCORE media (loop video, screenshots, OG image) is hot-linked from `raw.githubusercontent.com` — it only works while the SWARMCORE repo stays **public**. For full control, download the files into this folder and swap the URLs to relative paths.
 - The `stonks` and `resume-copilot` cards describe private projects; delete either block if you'd rather not mention them publicly. STONKS copy deliberately avoids dollar amounts and account details.
-- `_v1-classic.html` is the previous (pre-SWARMCORE) design, kept as a backup. Don't upload it, or it'll be publicly reachable at `/_v1-classic`.
+- `_v1-classic.html` is the previous (pre-SWARMCORE) design, kept as a backup. It's `.gitignore`d so it never gets published — it stays local only.

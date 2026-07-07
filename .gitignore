@@ -3,3 +3,6 @@
 
 # Old design backup — kept locally, never published
 _v1-classic.html
+
+# Local dev preview config
+.claude/
